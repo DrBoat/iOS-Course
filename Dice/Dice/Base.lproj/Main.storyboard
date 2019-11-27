@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_0" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sum = 8" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MrF-Gu-tZD">
-                                <rect key="frame" x="15" y="35" width="64.5" height="30"/>
+                                <rect key="frame" x="15" y="15" width="64.5" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="8dM-Xt-KDi"/>
                                 </constraints>
@@ -27,7 +26,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xTZ-RG-Ysc">
-                                <rect key="frame" x="235" y="35" width="70" height="30"/>
+                                <rect key="frame" x="235" y="15" width="70" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="70" id="Qsg-qg-pSg"/>
                                     <constraint firstAttribute="height" constant="30" id="psa-wD-GzS"/>
@@ -38,7 +37,7 @@
                                 </connections>
                             </button>
                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="CvW-dh-WrL">
-                                <rect key="frame" x="211" y="75" width="94" height="29"/>
+                                <rect key="frame" x="211" y="55" width="94" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="29" id="UNz-lK-lbr"/>
                                 </constraints>
@@ -47,7 +46,7 @@
                                 </connections>
                             </stepper>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2 DICE" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CXr-zA-RCC">
-                                <rect key="frame" x="15" y="75" width="52" height="29"/>
+                                <rect key="frame" x="15" y="55" width="52" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="29" id="7tV-9T-SGd"/>
                                 </constraints>
@@ -56,37 +55,37 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="diceValue3" translatesAutoresizingMaskIntoConstraints="NO" id="InJ-y2-3rs">
-                                <rect key="frame" x="15" y="114" width="140" height="140"/>
+                                <rect key="frame" x="15" y="94" width="140" height="140"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="InJ-y2-3rs" secondAttribute="height" multiplier="1:1" id="pI3-tK-fQi"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="diceValue5" translatesAutoresizingMaskIntoConstraints="NO" id="a7D-am-qXa">
-                                <rect key="frame" x="165" y="114" width="140" height="140"/>
+                                <rect key="frame" x="165" y="94" width="140" height="140"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="a7D-am-qXa" secondAttribute="height" multiplier="1:1" id="3fP-wI-KSD"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" tag="3" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="diceValue0" translatesAutoresizingMaskIntoConstraints="NO" id="Xl7-hI-lZt">
-                                <rect key="frame" x="15" y="264" width="140" height="140"/>
+                                <rect key="frame" x="15" y="244" width="140" height="140"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Xl7-hI-lZt" secondAttribute="height" multiplier="1:1" id="GA0-3n-9W5"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" tag="4" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="diceValue0" translatesAutoresizingMaskIntoConstraints="NO" id="cyF-3O-GRP">
-                                <rect key="frame" x="165" y="264" width="140" height="140"/>
+                                <rect key="frame" x="165" y="244" width="140" height="140"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="cyF-3O-GRP" secondAttribute="height" multiplier="1:1" id="TPq-uv-ggh"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" tag="5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="diceValue0" translatesAutoresizingMaskIntoConstraints="NO" id="aGn-HL-XHT">
-                                <rect key="frame" x="15" y="414" width="140" height="140"/>
+                                <rect key="frame" x="15" y="394" width="140" height="140"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="aGn-HL-XHT" secondAttribute="height" multiplier="1:1" id="sAG-m7-V1k"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" tag="6" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="diceValue0" translatesAutoresizingMaskIntoConstraints="NO" id="k8E-Mj-B6x">
-                                <rect key="frame" x="165" y="414" width="140" height="140"/>
+                                <rect key="frame" x="165" y="394" width="140" height="140"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="k8E-Mj-B6x" secondAttribute="height" multiplier="1:1" id="AxF-W5-nEJ"/>
                                 </constraints>
@@ -150,8 +149,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="diceValue0" width="308.57144165039062" height="308.57144165039062"/>
-        <image name="diceValue3" width="300" height="300"/>
-        <image name="diceValue5" width="300" height="300"/>
+        <image name="diceValue0" width="150" height="150"/>
+        <image name="diceValue3" width="150" height="150"/>
+        <image name="diceValue5" width="150" height="150"/>
     </resources>
 </document>

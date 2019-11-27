@@ -11,10 +11,11 @@ import UIKit
 class ViewController: UIViewController{
     
     var diceValues = [0, 0, 0, 0, 0, 0]
-    
+    var diceCount = 0
+    let userInitiatedQueue = DispatchQueue.global(qos: .userInitiated)
+    let utilityQueue = DispatchQueue.global(qos: .utility)
     
     @IBOutlet var dices: [UIImageView]!
-    
     
     @IBOutlet weak var sumLabel: UILabel!
     @IBOutlet weak var diceCountLabel: UILabel!
@@ -22,76 +23,83 @@ class ViewController: UIViewController{
     @IBOutlet weak var shakeButtonOutlet: UIButton!
     
     @IBAction func stepperAction(_ sender: Any) {
-        reloadDiceCounter(Int(stepperOutlet!.value))
+        reloadDiceCounter()
+        diceCount = Int(stepperOutlet!.value)
     }
     @IBAction func shakeButton(_ sender: Any) {
+        print("SHAKE button pressed")
         shakeDice()
     }
     
     override func motionBegan(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {}
-    
     override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
         if motion == .motionShake {
+            print("Device shaked")
             shakeDice()
         }
     }
     
-    func shakeDice() {
-        animateDices()
-//        print("Shaked")
-    }
-    
-    func reloadDiceCounter(_ newValue:Int) {
-        let oldValue = Int(String((diceCountLabel.text?.prefix(1))!))!
+    func reloadDiceCounter() {
+        let newValue = Int(stepperOutlet!.value)
+        let oldValue = diceCount
         if (newValue > oldValue) {
-            changeDiceValue(diceNum: newValue, value: Int.random(in: 1...6))
+            changeDiceValue(diceNum: newValue)
         }
         if (newValue < oldValue) {
             changeDiceValue(diceNum: oldValue, value: 0)
         }
         diceCountLabel.text = String(newValue) + " DICE"
+        print("diceCount changed from", oldValue, "to", newValue)
     }
     
-    func changeDiceValue (diceNum:Int, value:Int) {
-        let imageName = "diceValue" + String(value);
-        diceValues[diceNum - 1] = value
-        
-//        DispatchQueue.main.async(execute: {
-            self.dices[diceNum - 1].image = UIImage(named: imageName)
-//        })
-        
-//        print("Dice number " + String(diceNum) + " is " +  String(value))
-        reloadDiceValues()
+    func shakeDice() {
+        utilityQueue.async {
+            self.animateDices()
+        }
     }
     
-    func animateDices(/*time:Int, delay: Int*/) {
-//        var time:Int = 5000000
-//        var delay:Int = 1000
-        let diceCount = Int(String((diceCountLabel.text?.prefix(1))!))!
-//        while (time > 0)
-//        {
+    func animateDices() {
+        var time = 2000000, delay = 1000 // in microseconds
+        
+        while (time > 0)
+        {
+            print("Animate. Time left:", time, "microseconds")
             for i in 1...diceCount {
-                changeDiceValue(diceNum: i, value: Int.random(in: 1...6))
+                self.changeDiceValue(diceNum: i)
             }
-//            print(time)
-//            usleep(useconds_t(delay))
-//            delay *= 2
-//            time -= delay
-//        }
+            reloadDiceSum()
+            usleep(useconds_t(delay))
+            delay *= 2
+            time -= delay
+        }
+        print("Animate ended")
+    }
+    
+    func changeDiceValue (diceNum:Int, value:Int = .random(in: 1...6)) {
+        DispatchQueue.main.async {
+            let imageName = "diceValue" + String(value);
+            self.dices[diceNum - 1].image = UIImage(named: imageName)
+        }
+        diceValues[diceNum - 1] = value
+        print("Dice number", String(diceNum), "is", String(value))
+    }
+    
+    func reloadDiceSum() {
+        let sum = diceValues.reduce(0, +)
+        DispatchQueue.main.async {
+            self.sumLabel.text = "Sum = " + String(sum)
+        }
+        print("Dice sum is", String(sum))
     }
 
-    func reloadDiceValues() {
-        let sum = diceValues.reduce(0, +)
-        sumLabel.text = "Sum = " + String(sum)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         stepperOutlet.minimumValue = 1
         stepperOutlet.maximumValue = 6
-        stepperOutlet.value = 2
-        changeDiceValue(diceNum: 1, value: Int.random(in: 1...6))
-        changeDiceValue(diceNum: 2, value: Int.random(in: 1...6))
+        diceCount = 2
+        stepperOutlet.value = Double(diceCount)
+        changeDiceValue(diceNum: 1)
+        changeDiceValue(diceNum: 2)
     }
 
 
