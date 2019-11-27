@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_0" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -14,11 +13,11 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="calculator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DH5-0X-vNO">
-                                <rect key="frame" x="0.0" y="488" width="160" height="80"/>
+                                <rect key="frame" x="0.0" y="573.5" width="187.5" height="93.5"/>
                                 <color key="backgroundColor" red="0.20631954073905945" green="0.21176686882972717" blue="0.22628325223922729" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="DH5-0X-vNO" secondAttribute="height" multiplier="2:1" id="NJu-FJ-ZR8"/>
@@ -29,11 +28,11 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="tap_0:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2mv-lp-zXu"/>
+                                    <action selector="tap0:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2mv-lp-zXu"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vLu-0h-hEM">
-                                <rect key="frame" x="160" y="488" width="80" height="80"/>
+                                <rect key="frame" x="187.5" y="573.5" width="94" height="93.5"/>
                                 <color key="backgroundColor" red="0.2063195407" green="0.21176686880000001" blue="0.22628325220000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="vLu-0h-hEM" secondAttribute="height" multiplier="1:1" id="nkv-si-fMV"/>
@@ -44,11 +43,11 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="tap_comma:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oFO-Wr-8wV"/>
+                                    <action selector="tapComma:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oFO-Wr-8wV"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="11" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eHU-Yb-mLz">
-                                <rect key="frame" x="240" y="488" width="80" height="80"/>
+                                <rect key="frame" x="281.5" y="573.5" width="93.5" height="93.5"/>
                                 <color key="backgroundColor" red="0.99653154610000005" green="0.51632799573999144" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="eHU-Yb-mLz" secondAttribute="height" multiplier="1:1" id="YfK-Q9-f1o"/>
@@ -59,11 +58,11 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="tap_compute:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9fi-Re-I8F"/>
+                                    <action selector="tapCompute:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9fi-Re-I8F"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VaV-TX-Ad9">
-                                <rect key="frame" x="0.0" y="408" width="80" height="80"/>
+                                <rect key="frame" x="0.0" y="479.5" width="94" height="94"/>
                                 <color key="backgroundColor" red="0.2063195407" green="0.21176686880000001" blue="0.22628325220000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="VaV-TX-Ad9" secondAttribute="height" multiplier="1:1" id="hL5-Lw-wQN"/>
@@ -74,11 +73,11 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="tap_1:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jP0-Iy-Xi5"/>
+                                    <action selector="tap1:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jP0-Iy-Xi5"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n22-rE-8ej">
-                                <rect key="frame" x="80" y="408" width="80" height="80"/>
+                                <rect key="frame" x="94" y="479.5" width="93.5" height="94"/>
                                 <color key="backgroundColor" red="0.2063195407" green="0.21176686880000001" blue="0.22628325220000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="n22-rE-8ej" secondAttribute="height" multiplier="1:1" id="Deq-jI-x6j"/>
@@ -90,11 +89,11 @@
                                     <color key="titleShadowColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="tap_2:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mko-KB-uvs"/>
+                                    <action selector="tap2:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mko-KB-uvs"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XI3-LH-vYb">
-                                <rect key="frame" x="160" y="408" width="80" height="80"/>
+                                <rect key="frame" x="187.5" y="479.5" width="94" height="94"/>
                                 <color key="backgroundColor" red="0.2063195407" green="0.21176686880000001" blue="0.22628325220000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="XI3-LH-vYb" secondAttribute="height" multiplier="1:1" id="kb1-t7-my5"/>
@@ -105,11 +104,11 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="tap_3:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mZZ-CZ-4kQ"/>
+                                    <action selector="tap3:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mZZ-CZ-4kQ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="12" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X8E-Mj-9Gf">
-                                <rect key="frame" x="240" y="408" width="80" height="80"/>
+                                <rect key="frame" x="281.5" y="479.5" width="93.5" height="94"/>
                                 <color key="backgroundColor" red="0.99653154610000005" green="0.51632799569999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="X8E-Mj-9Gf" secondAttribute="height" multiplier="1:1" id="ZC2-09-aCb"/>
@@ -120,11 +119,11 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="tap_plus:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VC9-xe-xqQ"/>
+                                    <action selector="tapPlus:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VC9-xe-xqQ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e78-xj-Wj2">
-                                <rect key="frame" x="0.0" y="328" width="80" height="80"/>
+                                <rect key="frame" x="0.0" y="386" width="94" height="93.5"/>
                                 <color key="backgroundColor" red="0.2063195407" green="0.21176686880000001" blue="0.22628325220000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="e78-xj-Wj2" secondAttribute="height" multiplier="1:1" id="Cik-Ip-3i9"/>
@@ -135,11 +134,11 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="tap_4:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IaC-Fe-fxI"/>
+                                    <action selector="tap4:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IaC-Fe-fxI"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NJF-0s-3QH">
-                                <rect key="frame" x="80" y="328" width="80" height="80"/>
+                                <rect key="frame" x="94" y="386" width="93.5" height="93.5"/>
                                 <color key="backgroundColor" red="0.2063195407" green="0.21176686880000001" blue="0.22628325220000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="NJF-0s-3QH" secondAttribute="height" multiplier="1:1" id="X4p-Fw-iPJ"/>
@@ -150,11 +149,11 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="tap_5:" destination="BYZ-38-t0r" eventType="touchUpInside" id="K57-pk-2zL"/>
+                                    <action selector="tap5:" destination="BYZ-38-t0r" eventType="touchUpInside" id="K57-pk-2zL"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bFc-y7-XJK">
-                                <rect key="frame" x="160" y="328" width="80" height="80"/>
+                                <rect key="frame" x="187.5" y="386" width="94" height="93.5"/>
                                 <color key="backgroundColor" red="0.2063195407" green="0.21176686880000001" blue="0.22628325220000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="bFc-y7-XJK" secondAttribute="height" multiplier="1:1" id="xcX-Ew-RAX"/>
@@ -165,11 +164,11 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="tap_6:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jph-pv-Vap"/>
+                                    <action selector="tap6:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jph-pv-Vap"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="13" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m9k-H4-hGb">
-                                <rect key="frame" x="240" y="328" width="80" height="80"/>
+                                <rect key="frame" x="281.5" y="386" width="93.5" height="93.5"/>
                                 <color key="backgroundColor" red="0.99653154610000005" green="0.51632799569999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="m9k-H4-hGb" secondAttribute="height" multiplier="1:1" id="Du6-BH-t21"/>
@@ -180,11 +179,11 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="tap_minus:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FZe-LS-0pQ"/>
+                                    <action selector="tapMinus:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FZe-LS-0pQ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gSN-Qn-7Af">
-                                <rect key="frame" x="0.0" y="248" width="80" height="80"/>
+                                <rect key="frame" x="0.0" y="292" width="94" height="94"/>
                                 <color key="backgroundColor" red="0.2063195407" green="0.21176686880000001" blue="0.22628325220000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="gSN-Qn-7Af" secondAttribute="height" multiplier="1:1" id="BOJ-Z8-2sY"/>
@@ -195,11 +194,11 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="tap_7:" destination="BYZ-38-t0r" eventType="touchUpInside" id="g7e-i5-s9n"/>
+                                    <action selector="tap7:" destination="BYZ-38-t0r" eventType="touchUpInside" id="g7e-i5-s9n"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hXg-3q-xl5">
-                                <rect key="frame" x="80" y="248" width="80" height="80"/>
+                                <rect key="frame" x="94" y="292" width="93.5" height="94"/>
                                 <color key="backgroundColor" red="0.2063195407" green="0.21176686880000001" blue="0.22628325220000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="hXg-3q-xl5" secondAttribute="height" multiplier="1:1" id="eTo-uG-tyr"/>
@@ -210,11 +209,11 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="tap_8:" destination="BYZ-38-t0r" eventType="touchUpInside" id="84Y-U0-SL1"/>
+                                    <action selector="tap8:" destination="BYZ-38-t0r" eventType="touchUpInside" id="84Y-U0-SL1"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="9" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="agx-ba-OOf">
-                                <rect key="frame" x="160" y="248" width="80" height="80"/>
+                                <rect key="frame" x="187.5" y="292" width="94" height="94"/>
                                 <color key="backgroundColor" red="0.2063195407" green="0.21176686880000001" blue="0.22628325220000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="agx-ba-OOf" secondAttribute="height" multiplier="1:1" id="oOm-7s-Ypd"/>
@@ -225,11 +224,11 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="tap_9:" destination="BYZ-38-t0r" eventType="touchUpInside" id="K1B-8e-GRX"/>
+                                    <action selector="tap9:" destination="BYZ-38-t0r" eventType="touchUpInside" id="K1B-8e-GRX"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="14" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VdV-Nj-Sv6">
-                                <rect key="frame" x="240" y="248" width="80" height="80"/>
+                                <rect key="frame" x="281.5" y="292" width="93.5" height="94"/>
                                 <color key="backgroundColor" red="0.99653154610000005" green="0.51632799569999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="VdV-Nj-Sv6" secondAttribute="height" multiplier="1:1" id="bop-QX-z0E"/>
@@ -240,11 +239,11 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="tap_multiply:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iMJ-jW-TsI"/>
+                                    <action selector="tapMultiply:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iMJ-jW-TsI"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="17" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b2c-Pe-Qhb">
-                                <rect key="frame" x="80" y="168" width="80" height="80"/>
+                                <rect key="frame" x="94" y="198.5" width="93.5" height="93.5"/>
                                 <color key="backgroundColor" red="0.61585372689999995" green="0.61583530900000005" blue="0.61584573980000001" alpha="1" colorSpace="custom" customColorSpace="deviceRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="b2c-Pe-Qhb" secondAttribute="height" multiplier="1:1" id="Kfh-iL-Mxc"/>
@@ -255,11 +254,11 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="tap_sign:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4wC-X7-t1X"/>
+                                    <action selector="tapSign:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4wC-X7-t1X"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="16" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ilL-Cq-FCg">
-                                <rect key="frame" x="160" y="168" width="80" height="80"/>
+                                <rect key="frame" x="187.5" y="198.5" width="94" height="93.5"/>
                                 <color key="backgroundColor" red="0.61585372689999995" green="0.61583530900000005" blue="0.61584573980000001" alpha="1" colorSpace="custom" customColorSpace="deviceRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="ilL-Cq-FCg" secondAttribute="height" multiplier="1:1" id="qnb-Yu-jvm"/>
@@ -270,11 +269,11 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="tap_sqrt:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hhV-dA-2qE"/>
+                                    <action selector="tapSqrt:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hhV-dA-2qE"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="18" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pjh-qs-euc">
-                                <rect key="frame" x="0.0" y="168" width="80" height="80"/>
+                                <rect key="frame" x="0.0" y="198.5" width="94" height="93.5"/>
                                 <color key="backgroundColor" red="0.61585372689999995" green="0.61583530900000005" blue="0.61584573980000001" alpha="1" colorSpace="custom" customColorSpace="deviceRGB"/>
                                 <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="40"/>
                                 <color key="tintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -282,11 +281,11 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="tap_clear:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Zfh-7O-j0n"/>
+                                    <action selector="tapClear:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Zfh-7O-j0n"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="15" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0HR-17-ph3">
-                                <rect key="frame" x="240" y="168" width="80" height="80"/>
+                                <rect key="frame" x="281.5" y="198.5" width="93.5" height="93.5"/>
                                 <color key="backgroundColor" red="0.99653154610000005" green="0.51632799569999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="0HR-17-ph3" secondAttribute="height" multiplier="1:1" id="Xmf-yr-XZE"/>
@@ -297,19 +296,17 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="tap_divide:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NUP-mJ-QvQ"/>
+                                    <action selector="tapDivide:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NUP-mJ-QvQ"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="25" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MRE-cI-U6S">
-                                <rect key="frame" x="8" y="28" width="304" height="132"/>
+                                <rect key="frame" x="8" y="8" width="359" height="182.5"/>
                                 <gestureRecognizers/>
                                 <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="100"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                                 <connections>
-                                    <outletCollection property="gestureRecognizers" destination="fYL-YJ-Brl" appends="YES" id="t5C-M3-2qv"/>
-                                    <outletCollection property="gestureRecognizers" destination="fYL-YJ-Brl" appends="YES" id="f64-zP-Q3k"/>
-                                    <outletCollection property="gestureRecognizers" destination="fYL-YJ-Brl" appends="YES" id="zDP-ts-Jdd"/>
+                                    <outletCollection property="gestureRecognizers" destination="fYL-YJ-Brl" appends="YES" id="kQv-ZM-wwO"/>
                                 </connections>
                             </label>
                         </subviews>
@@ -402,33 +399,13 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="button_0" destination="DH5-0X-vNO" id="jSd-jb-4H8"/>
-                        <outlet property="button_1" destination="VaV-TX-Ad9" id="NXi-Wk-Iyw"/>
-                        <outlet property="button_2" destination="n22-rE-8ej" id="Fcm-SP-98e"/>
-                        <outlet property="button_3" destination="XI3-LH-vYb" id="mGb-B1-rWG"/>
-                        <outlet property="button_4" destination="e78-xj-Wj2" id="rY5-Go-AeN"/>
-                        <outlet property="button_5" destination="NJF-0s-3QH" id="nBO-bh-Pil"/>
-                        <outlet property="button_6" destination="bFc-y7-XJK" id="89E-Rc-H5L"/>
-                        <outlet property="button_7" destination="gSN-Qn-7Af" id="ImS-y3-MFF"/>
-                        <outlet property="button_8" destination="hXg-3q-xl5" id="v6O-0h-wMS"/>
-                        <outlet property="button_9" destination="agx-ba-OOf" id="l3q-er-eqx"/>
-                        <outlet property="button_clear" destination="pjh-qs-euc" id="og5-pX-Mwi"/>
-                        <outlet property="button_comma" destination="vLu-0h-hEM" id="WGK-zf-xvf"/>
-                        <outlet property="button_compute" destination="eHU-Yb-mLz" id="wth-Dp-91C"/>
-                        <outlet property="button_divide" destination="0HR-17-ph3" id="3mi-ab-tcS"/>
-                        <outlet property="button_minus" destination="m9k-H4-hGb" id="zGr-bn-eUv"/>
-                        <outlet property="button_multiply" destination="VdV-Nj-Sv6" id="MMH-uA-cXs"/>
-                        <outlet property="button_plus" destination="X8E-Mj-9Gf" id="3zu-E4-luL"/>
-                        <outlet property="button_sign" destination="b2c-Pe-Qhb" id="dlB-Hz-dNZ"/>
-                        <outlet property="button_sqrt" destination="ilL-Cq-FCg" id="ET6-HC-X3r"/>
-                        <outlet property="label_answer" destination="MRE-cI-U6S" id="O0e-sb-qx8"/>
+                        <outlet property="labelAnswer" destination="MRE-cI-U6S" id="O0e-sb-qx8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <swipeGestureRecognizer direction="right" id="fYL-YJ-Brl">
                     <connections>
-                        <action selector="swipe:" destination="BYZ-38-t0r" id="vJZ-Tu-tKC"/>
-                        <outlet property="delegate" destination="MRE-cI-U6S" id="l6S-ox-FD3"/>
+                        <action selector="swipe:" destination="BYZ-38-t0r" id="fO5-eV-8GT"/>
                     </connections>
                 </swipeGestureRecognizer>
             </objects>

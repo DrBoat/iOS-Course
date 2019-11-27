@@ -8,677 +8,478 @@
 
 import UIKit
 
+enum ActionType {
+    case plus
+    case minus
+    case multiply
+    case divide
+    case nothing
+}
+
 class ViewController: UIViewController {
-    @IBOutlet weak var button_0: UIButton!
-    @IBOutlet weak var button_1: UIButton!
-    @IBOutlet weak var button_2: UIButton!
-    @IBOutlet weak var button_3: UIButton!
-    @IBOutlet weak var button_4: UIButton!
-    @IBOutlet weak var button_5: UIButton!
-    @IBOutlet weak var button_6: UIButton!
-    @IBOutlet weak var button_7: UIButton!
-    @IBOutlet weak var button_8: UIButton!
-    @IBOutlet weak var button_9: UIButton!
+    var firstNumber: Double = 0
+    var isFirstNumExists = false
+    var isFirstDouble = false
+    var firstAction = ActionType.nothing
     
-    @IBOutlet weak var button_comma:    UIButton!
-    @IBOutlet weak var button_compute:  UIButton!
-    @IBOutlet weak var button_plus:     UIButton!
-    @IBOutlet weak var button_minus:    UIButton!
-    @IBOutlet weak var button_multiply: UIButton!
-    @IBOutlet weak var button_divide:   UIButton!
-    @IBOutlet weak var button_sqrt:     UIButton!
-    @IBOutlet weak var button_sign:     UIButton!
-    @IBOutlet weak var button_clear:    UIButton!
+    var secondNumber: Double = 0
+    var isSecondNumExists = false
+    var isSecondDouble = false
+    var secondAction = ActionType.nothing
     
-    @IBOutlet weak var label_answer: UILabel!
+    var thirdNumber: Double = 0
+    var isThirdNumExists = false
+    var isThirdDouble = false
+    var thirdAction = ActionType.nothing
     
-    @IBAction func tap_0(_ sender: UIButton)
-    {
-        tap_number(num: 0)
-    }
-    @IBAction func tap_1(_ sender: UIButton)
-    {
-        tap_number(num: 1)
-    }
-    @IBAction func tap_2(_ sender: UIButton)
-    {
-        tap_number(num: 2)
-    }
-    @IBAction func tap_3(_ sender: UIButton)
-    {
-        tap_number(num: 3)
-    }
-    @IBAction func tap_4(_ sender: UIButton)
-    {
-        tap_number(num: 4)
-    }
-    @IBAction func tap_5(_ sender: UIButton)
-    {
-        tap_number(num: 5)
-    }
-    @IBAction func tap_6(_ sender: UIButton)
-    {
-        tap_number(num: 6)
-    }
-    @IBAction func tap_7(_ sender: UIButton)
-    {
-        tap_number(num: 7)
-    }
-    @IBAction func tap_8(_ sender: UIButton)
-    {
-        tap_number(num: 8)
-    }
-    @IBAction func tap_9(_ sender: UIButton)
-    {
-        tap_number(num: 9)
+    var currentNumber:Double = 0
+    var curentNumberString = "0"
+    var toLabel = "0"
+    var isDouble = false
+    var isLastComputed = false
+    
+    func softClear(){
+        firstNumber = 0
+        isFirstNumExists = false
+        isFirstDouble = false
+        firstAction = ActionType.nothing
+        secondNumber = 0
+        isSecondNumExists = false
+        isSecondDouble = false
+        secondAction = ActionType.nothing
+        thirdNumber = 0
+        isThirdNumExists = false
+        isThirdDouble = false
+        thirdAction = ActionType.nothing
     }
     
-    
-    @IBAction func tap_comma(_ sender: UIButton) {
-        if (label_answer.text == "Ошибка")
-        {
-            return
-        }
-        if(is_double == true || cur_number_string.count >= 9)
-        {
-            return
-        }
-        is_double = true
-        cur_number_string += "."
-        to_label += ","
-        label_answer.text = to_label
+    func clear() {
+        softClear()
+        currentNumber = 0
+        curentNumberString = "0"
+        toLabel = "0"
+        isDouble = false
+        isLastComputed = false
     }
     
-    @IBAction func tap_compute(_ sender: UIButton)
-    {
-        if (label_answer.text == "Ошибка")
-        {
+    @IBOutlet weak var labelAnswer: UILabel!
+    
+    @IBAction func tap0(_ sender: UIButton) {
+        tapNumber(num: 0)
+    }
+    @IBAction func tap1(_ sender: UIButton) {
+        tapNumber(num: 1)
+    }
+    @IBAction func tap2(_ sender: UIButton) {
+        tapNumber(num: 2)
+    }
+    @IBAction func tap3(_ sender: UIButton) {
+        tapNumber(num: 3)
+    }
+    @IBAction func tap4(_ sender: UIButton) {
+        tapNumber(num: 4)
+    }
+    @IBAction func tap5(_ sender: UIButton) {
+        tapNumber(num: 5)
+    }
+    @IBAction func tap6(_ sender: UIButton) {
+        tapNumber(num: 6)
+    }
+    @IBAction func tap7(_ sender: UIButton) {
+        tapNumber(num: 7)
+    }
+    @IBAction func tap8(_ sender: UIButton) {
+        tapNumber(num: 8)
+    }
+    @IBAction func tap9(_ sender: UIButton) {
+        tapNumber(num: 9)
+    }
+    
+    @IBAction func tapComma(_ sender: UIButton) {
+        if (labelAnswer.text == "Ошибка" ||
+            isDouble == true ||
+            curentNumberString.count >= 9) {
             return
         }
         
-        if (!is_exist_frst_num)
-        {
-            is_exist_frst_num = true
-            first_number = cur_number
-            new_num()
+        isDouble = true
+        curentNumberString += "."
+        toLabel += ","
+        labelAnswer.text = toLabel
+    }
+    
+    @IBAction func tapCompute(_ sender: UIButton) {
+        if (labelAnswer.text == "Ошибка") {
+            return
         }
-        else
-        {
-            if(!is_exist_scnd_num)
-            {
-                is_exist_scnd_num = true
-                second_number = cur_number
-                new_num()
-            }
-            else
-            {
-                if(!is_exist_thrd_num)
-                {
-                    is_exist_thrd_num = true
-                    third_number = cur_number
-                    new_num()
-                }
-                else
-                {
-                    precompute();
-                    is_exist_thrd_num = true
-                    third_number = cur_number
-                    new_num()
-                }
-            }
+        newNumber()
+        
+        if (isThirdNumExists) {
+            precompute()
         }
         
-        if (is_exist_thrd_num)
-        {
-            precompute();
-        }
-        if (is_exist_scnd_num)
-        {
-            if (first_action == "plus")
-            {
-                first_number += second_number;
-            }
-            else if (first_action == "minus")
-            {
-                first_number -= second_number;
-            }
-            else if (first_action == "multiply")
-            {
-                first_number *= second_number;
-            }
-            else if (first_action == "divide")
-            {
-                if (second_number == 0)
-                {
-                    label_answer.text = "Ошибка"
-                    return
-                }
-                first_number /= second_number;
-            }
-        }
-        var tmp_cur = String(first_number);
-        if (tmp_cur.removeLast() == "0")
-        {
-            if (tmp_cur.removeLast() == ".")
-            {
-                is_first_double = false
-            }
-            else
-            {
-                is_first_double = true
-            }
-        }
-        else
-        {
-            is_first_double = true
-        }
-        cur_number = first_number;
-        is_double = is_first_double;
-        if (!is_first_double)
-        {
-            cur_number_string = tmp_cur
-        }
-        else
-        {
-            cur_number_string = String(cur_number)
-        }
-        third_number = 0
-        is_exist_thrd_num = false
-        is_third_double = false
-        third_action = ""
+        let copyOfFirstNumber = computeFirstAction()
+        currentNumber = firstNumber
+        isDouble = isFirstDouble
         
-        if (!is_double)
-        {
-            if (cur_number_string.count < 9)
-            {
-                to_label = cur_number_string
-                if (to_label.count > 3)
-                {
-                    to_label.insert(" ", at: to_label.index(to_label.endIndex, offsetBy: -3))
-                }
-                if (to_label.count > 7)
-                {
-                    to_label.insert(" ", at: to_label.index(to_label.endIndex, offsetBy: -7))
-                }
-                first_number = 0
-                is_exist_frst_num = false
-                is_first_double = false
-                first_action = ""
-                second_number = 0
-                is_exist_scnd_num = false
-                is_second_double = false
-                second_action = ""
-                third_number = 0
-                is_exist_thrd_num = false
-                is_third_double = false
-                third_action = ""
-                label_answer.text = to_label
-                is_last_compute = true;
+        thirdNumber = 0
+        isThirdNumExists = false
+        isThirdDouble = false
+        thirdAction = ActionType.nothing
+        
+        if (isDouble) {
+            curentNumberString = String(currentNumber)
+        } else {
+            curentNumberString = copyOfFirstNumber
+            if (curentNumberString.count < 9) {
+                toLabel = curentNumberString
+                setSpacesToLabel()
+                labelAnswer.text = toLabel
+                isLastComputed = true
+                softClear()
                 return
-            }
-            else
-            {
-                var cnt = 0
-                while (cur_number_string.count > 6)
-                {
-                    _ = cur_number_string.removeLast()
-                    cnt += 1
-                }
-                cur_number_string += "e"
-                cur_number_string += String(cnt)
-                label_answer.text = cur_number_string
-                first_number = 0
-                is_exist_frst_num = false
-                is_first_double = false
-                first_action = ""
-                second_number = 0
-                is_exist_scnd_num = false
-                is_second_double = false
-                second_action = ""
-                third_number = 0
-                is_exist_thrd_num = false
-                is_third_double = false
-                third_action = ""
-                is_last_compute = true;
+            } else {
+                toExpForm()
                 return
             }
         }
-        var i = 0;
-        var tmp_str = cur_number_string;
-        var too_long = true;
-        while (i < 9 && cur_number_string.count > 9)
-        {
-            if (tmp_str.removeFirst() == ".")
-            {
-                too_long = false;
+        var i = 0
+        var copyOfCurrentNumberString = curentNumberString
+        var isTooLong = true
+        
+        while (i < 9 && curentNumberString.count > 9) {
+            if (copyOfCurrentNumberString.removeFirst() == ".") {
+                isTooLong = false
             }
             i += 1
         }
-        if (too_long)
-        {
-            cur_number_string = String(Int(cur_number))
-            var cnt = 0
-            while (cur_number_string.count > 6)
-            {
-                _ = cur_number_string.removeLast()
-                cnt += 1
-            }
-            cur_number_string += "e"
-            cur_number_string += String(cnt)
-            label_answer.text = cur_number_string
-            first_number = 0
-            is_exist_frst_num = false
-            is_first_double = false
-            first_action = ""
-            second_number = 0
-            is_exist_scnd_num = false
-            is_second_double = false
-            second_action = ""
-            third_number = 0
-            is_exist_thrd_num = false
-            is_third_double = false
-            third_action = ""
-            is_last_compute = true;
+        if (isTooLong) {
+            curentNumberString = String(Int(currentNumber))
+            toExpForm()
             return
-        }
-        else
-        {
-            while (cur_number_string.count > 9)
-            {
-                _ = cur_number_string.removeLast()
-            }
-            cur_number = Double(cur_number_string) ?? 0
-            to_label = cur_number_string
-            var reversed_end = "";
-            while (to_label.last != ".")
-            {
-                reversed_end += String(to_label.removeLast())
-            }
-            _ = to_label.removeLast()
-            if (to_label.count > 3)
-            {
-                to_label.insert(" ", at: to_label.index(to_label.endIndex, offsetBy: -3))
-            }
-            if (to_label.count > 7)
-            {
-                to_label.insert(" ", at: to_label.index(to_label.endIndex, offsetBy: -7))
-            }
-            to_label.insert(",", at: to_label.endIndex)
-            while (reversed_end.count > 0)
-            {
-                to_label.insert(reversed_end.removeLast(), at: to_label.endIndex)
-            }
-            first_number = 0
-            is_exist_frst_num = false
-            is_first_double = false
-            first_action = ""
-            second_number = 0
-            is_exist_scnd_num = false
-            is_second_double = false
-            second_action = ""
-            third_number = 0
-            is_exist_thrd_num = false
-            is_third_double = false
-            third_action = ""
-            label_answer.text = to_label
-            is_last_compute = true;
+        } else {
+            recalculateSpacesForDouble()
+            isLastComputed = true
+            softClear()
             return
         }
     }
     
-    @IBAction func tap_plus(_ sender: UIButton)
-    {
-        tap_action(type_of_action: "plus")
+    @IBAction func tapPlus(_ sender: UIButton) {
+        newNumber(actionType: .plus)
     }
     
-    @IBAction func tap_minus(_ sender: UIButton)
-    {
-        tap_action(type_of_action: "minus")
+    @IBAction func tapMinus(_ sender: UIButton) {
+        newNumber(actionType: .minus)
     }
     
-    @IBAction func tap_multiply(_ sender: UIButton)
-    {
-        tap_action(type_of_action: "multiply")
+    @IBAction func tapMultiply(_ sender: UIButton) {
+        newNumber(actionType: .multiply)
     }
     
-    @IBAction func tap_divide(_ sender: UIButton)
-    {
-        tap_action(type_of_action: "divide")
+    @IBAction func tapDivide(_ sender: UIButton) {
+        newNumber(actionType: .divide)
     }
     
-    func tap_action (type_of_action: String)
-    {
-        if (label_answer.text == "Ошибка")
-        {
+    func newNumber (actionType: ActionType = .nothing) {
+        if (labelAnswer.text == "Ошибка") {
             return
         }
-        if (!is_exist_frst_num)
-        {
-            is_exist_frst_num = true
-            first_number = cur_number
-            first_action = type_of_action
-            new_num()
-        }
-        else
-        {
-            if(!is_exist_scnd_num)
-            {
-                is_exist_scnd_num = true
-                second_number = cur_number
-                second_action = type_of_action
-                new_num()
+        if (!isFirstNumExists) {
+            isFirstNumExists = true
+            firstNumber = currentNumber
+            if (actionType != .nothing) {
+                firstAction = actionType
             }
-            else
-            {
-                if(!is_exist_thrd_num)
-                {
-                    is_exist_thrd_num = true
-                    third_number = cur_number
-                    third_action = type_of_action
-                    new_num()
+            toNextNumber()
+        } else {
+            if(!isSecondNumExists) {
+                isSecondNumExists = true
+                secondNumber = currentNumber
+                if (actionType != .nothing) {
+                    secondAction = actionType
                 }
-                else
-                {
-                    precompute();
-                    is_exist_thrd_num = true
-                    third_number = cur_number
-                    third_action = type_of_action
-                    new_num()
+                toNextNumber()
+            } else {
+                if(!isThirdNumExists) {
+                    isThirdNumExists = true
+                    thirdNumber = currentNumber
+                    if (actionType != .nothing) {
+                        thirdAction = actionType
+                    }
+                    toNextNumber()
+                } else {
+                    precompute()
+                    isThirdNumExists = true
+                    thirdNumber = currentNumber
+                    if (actionType != .nothing) {
+                        thirdAction = actionType
+                    }
+                    toNextNumber()
                 }
             }
         }
     }
     
     
-    @IBAction func tap_sqrt(_ sender: UIButton)
-    {
-        if (label_answer.text == "Ошибка")
-        {
+    @IBAction func tapSqrt(_ sender: UIButton) {
+        if (labelAnswer.text == "Ошибка") {
             return
         }
-        if (cur_number < 0)
-        {
-            label_answer.text = "Ошибка";
+        if (currentNumber < 0) {
+            labelAnswer.text = "Ошибка"
             return
         }
-        cur_number = cur_number.squareRoot();
-        cur_number_string = String(cur_number)
-        is_double = check_double_after_sqrt()
-        is_last_compute = true;
+        currentNumber = currentNumber.squareRoot()
+        curentNumberString = String(currentNumber)
+        isDouble = checkDoubleAfterSqrt()
+        isLastComputed = true
     }
     
-    @IBAction func tap_sign(_ sender: UIButton)
-    {
-        if (label_answer.text == "Ошибка")
-        {
+    @IBAction func tapSign(_ sender: UIButton) {
+        if (labelAnswer.text == "Ошибка") {
             return
         }
-        cur_number *= -1;
-        if (cur_number_string.first != "-")
-        {
-            cur_number_string.insert("-", at: cur_number_string.startIndex)
-            to_label.insert("-", at: to_label.startIndex)
-            label_answer.text = to_label
-        }
-        else
-        {
-            cur_number_string.remove(at: cur_number_string.startIndex)
-            to_label.remove(at: to_label.startIndex)
-            label_answer.text = to_label
+        currentNumber *= -1
+        if (curentNumberString.first != "-") {
+            curentNumberString.insert("-", at: curentNumberString.startIndex)
+            toLabel.insert("-", at: toLabel.startIndex)
+            labelAnswer.text = toLabel
+        } else {
+            curentNumberString.remove(at: curentNumberString.startIndex)
+            toLabel.remove(at: toLabel.startIndex)
+            labelAnswer.text = toLabel
         }
     }
     
-    @IBAction func tap_clear(_ sender: UIButton)
-    {
+    @IBAction func tapClear(_ sender: UIButton) {
         clear()
-        label_answer.text = to_label
+        labelAnswer.text = toLabel
     }
     
-    @IBAction func swipe(_ sender: UISwipeGestureRecognizer) {
-    }
-    
-    
-    var first_number: Double = 0
-    var is_exist_frst_num = false
-    var is_first_double = false
-    var first_action = ""
-    
-    var second_number: Double = 0
-    var is_exist_scnd_num = false
-    var is_second_double = false
-    var second_action = ""
-    
-    var third_number: Double = 0
-    var is_exist_thrd_num = false
-    var is_third_double = false
-    var third_action = ""
-    
-    var cur_number:Double = 0
-    var cur_number_string = "0"
-    var to_label = "0"
-    var is_double = false
-    var is_last_compute = false;
-    
-    func clear()
-    {
-        first_number = 0
-        is_exist_frst_num = false
-        is_first_double = false
-        first_action = ""
-        second_number = 0
-        is_exist_scnd_num = false
-        is_second_double = false
-        second_action = ""
-        third_number = 0
-        is_exist_thrd_num = false
-        is_third_double = false
-        third_action = ""
-        cur_number = 0
-        cur_number_string = "0"
-        to_label = "0"
-        is_double = false
-        is_last_compute = false
-    }
-    
-    func new_num()
-    {
-        cur_number = 0
-        cur_number_string = "0"
-        to_label = "0"
-        is_double = false
-        is_last_compute = false
-    }
-    
-    func tap_number(num: Int)
-    {
-        if (label_answer.text == "Ошибка" || is_last_compute)
-        {
+    @IBAction func swipe(_ sender: UIGestureRecognizer) {
+        if (labelAnswer.text == "Ошибка" || isLastComputed) {
             clear()
         }
-        if (is_double)
-        {
-            if (cur_number_string.count >= 10)
-            {
-                return
-            }
-            to_label += String(num)
-            cur_number_string += String(num)
-            cur_number = Double(cur_number_string) ?? cur_number
-            label_answer.text = to_label
+        if (curentNumberString == "0") {
             return
         }
-        if (cur_number_string == "0")
-        {
-            cur_number_string = "";
+        if (isDouble && curentNumberString.last == "." && toLabel.last == ",") {
+                isDouble = false
         }
-        if (cur_number_string.count >= 9)
-        {
-            return
-        }
-        cur_number_string += String(num)
-        cur_number = Double(cur_number_string) ?? 0
-        to_label = cur_number_string
-        if (to_label.count > 3)
-        {
-            to_label.insert(" ", at: to_label.index(to_label.endIndex, offsetBy: -3))
-        }
-        if (to_label.count > 7)
-        {
-            to_label.insert(" ", at: to_label.index(to_label.endIndex, offsetBy: -7))
-        }
+        _ = curentNumberString.removeLast()
+        _ = toLabel.removeLast()
         
-        label_answer.text = to_label
+        if (!isDouble) {
+            toLabel = curentNumberString
+            setSpacesToLabel()
+        }
+        labelAnswer.text = toLabel
     }
     
-    func check_double_after_sqrt() -> Bool
-    {
-        var tmp_cur = cur_number_string;
-        if (tmp_cur.removeLast() == "0")
-        {
-            if (tmp_cur.removeLast() == ".")
-            {
-                cur_number_string = tmp_cur
-                to_label = cur_number_string
-                label_answer.text = to_label
+    func toNextNumber() {
+        currentNumber = 0
+        curentNumberString = "0"
+        toLabel = "0"
+        isDouble = false
+        isLastComputed = false
+    }
+    
+    func tapNumber(num: Int) {
+        if (labelAnswer.text == "Ошибка" || isLastComputed) {
+            clear()
+        }
+        if (isDouble) {
+            if (curentNumberString.count >= 10) {
+                return
+            }
+            toLabel += String(num)
+            curentNumberString += String(num)
+            currentNumber = Double(curentNumberString) ?? currentNumber
+            labelAnswer.text = toLabel
+            return
+        }
+        if (curentNumberString == "0") {
+            curentNumberString = ""
+        }
+        if (curentNumberString.count >= 9) {
+            return
+        }
+        curentNumberString += String(num)
+        currentNumber = Double(curentNumberString) ?? 0
+        toLabel = curentNumberString
+        setSpacesToLabel()
+        labelAnswer.text = toLabel
+    }
+    
+    func checkDoubleAfterSqrt() -> Bool {
+        var copyOfCurrentNumberString = curentNumberString
+        if (copyOfCurrentNumberString.removeLast() == "0") {
+            if (copyOfCurrentNumberString.removeLast() == ".") {
+                curentNumberString = copyOfCurrentNumberString
+                toLabel = curentNumberString
+                labelAnswer.text = toLabel
                 return false
             }
         }
-        while (cur_number_string.count > 9)
-        {
-            _ = cur_number_string.removeLast()
-        }
-        cur_number = Double(cur_number_string) ?? 0
-        
-        to_label = cur_number_string
-        var reversed_end = "";
-        while (to_label.last != ".")
-        {
-            reversed_end += String(to_label.removeLast())
-        }
-        _ = to_label.removeLast()
-        if (to_label.count > 3)
-        {
-            to_label.insert(" ", at: to_label.index(to_label.endIndex, offsetBy: -3))
-        }
-        if (to_label.count > 7)
-        {
-            to_label.insert(" ", at: to_label.index(to_label.endIndex, offsetBy: -7))
-        }
-        to_label.insert(",", at: to_label.endIndex)
-        while (reversed_end.count > 0) {
-            to_label.insert(reversed_end.removeLast(), at: to_label.endIndex)
-        }
-        label_answer.text = to_label
+        recalculateSpacesForDouble()
         return true
     }
     
-    func precompute()
-    {
-        let fs: Bool = (first_action == "plus" || first_action == "minus")
-        let ff: Bool = (first_action == "multiply" || first_action == "divide")
-        let ss: Bool = (second_action == "plus" || second_action == "minus")
-        let sf: Bool = (second_action == "multiply" || second_action == "divide")
-        if ((fs && ss) || (ff && sf) || (ff && ss))
-        {
-            if (first_action == "plus")
-            {
-                first_number += second_number;
+    func precompute() {
+        /// first letter: number of action
+        /// second letter: priority of action
+        let fs: Bool = (firstAction == .plus || firstAction == .minus)
+        let ff: Bool = (firstAction == .multiply || firstAction == .divide)
+        let ss: Bool = (secondAction == .plus || secondAction == .minus)
+        let sf: Bool = (secondAction == .multiply || secondAction == .divide)
+        
+        if ((fs && ss) || (ff && sf) || (ff && ss)) {
+            _ = computeFirstAction()
+            secondNumber = thirdNumber
+            firstAction = secondAction
+            isSecondDouble = isThirdDouble
+            thirdNumber = 0
+            thirdAction = .nothing
+            isThirdNumExists = false
+            isThirdDouble = false
+        } else {
+            computeSecondAction()
+            secondAction = thirdAction
+            thirdNumber = 0
+            thirdAction = .nothing
+            isThirdNumExists = false
+            isThirdDouble = false
+        }
+    }
+    
+    func computeFirstAction() -> String {
+        if (isFirstNumExists && isSecondNumExists) {
+            switch firstAction {
+            case .plus: do {
+                self.firstNumber += secondNumber
+                }
+            case .minus: do {
+                self.firstNumber -= secondNumber
             }
-            else if (first_action == "minus")
-            {
-                first_number -= second_number;
+            case .multiply: do {
+                self.firstNumber *= secondNumber
             }
-            else if (first_action == "multiply")
-            {
-                first_number *= second_number;
+            case .divide: do {
+                if (self.secondNumber == 0) {
+                    labelAnswer.text = "Ошибка"
+                    return ""
+                }
+                self.firstNumber /= secondNumber
             }
-            else if (first_action == "divide")
-            {
-                if (second_number == 0)
-                {
-                    label_answer.text = "Ошибка"
+            case .nothing: do {}
+            }
+        }
+        
+        isFirstDouble = true
+        var copyOfFirstNumber = String(firstNumber)
+        if (copyOfFirstNumber.removeLast() == "0") {
+            if (copyOfFirstNumber.removeLast() == ".") {
+                isFirstDouble = false
+            }
+        }
+        return copyOfFirstNumber
+    }
+    
+    func computeSecondAction() {
+        if (isSecondNumExists && isThirdNumExists) {
+            switch secondAction {
+            case .plus: do {
+                self.secondNumber += thirdNumber
+                }
+            case .minus: do {
+                self.secondNumber -= thirdNumber
+            }
+            case .multiply: do {
+                self.secondNumber *= thirdNumber
+            }
+            case .divide: do {
+                if (self.thirdNumber == 0) {
+                    labelAnswer.text = "Ошибка"
                     return
                 }
-                first_number /= second_number;
+                self.secondNumber /= thirdNumber
             }
-            var tmp_cur = String(first_number);
-            if (tmp_cur.removeLast() == "0")
-            {
-                if (tmp_cur.removeLast() == ".")
-                {
-                    is_first_double = false
-                }
-                else
-                {
-                   is_first_double = true
-                }
+            case .nothing: do {}
             }
-            else
-            {
-                is_first_double = true
-            }
-            second_number = third_number;
-            first_action = second_action;
-            is_second_double = is_third_double;
-            third_number = 0;
-            third_action = ""
-            is_exist_thrd_num = false
-            is_third_double = false
         }
-        else
-        {
-            if (second_action == "plus")
-            {
-                second_number += third_number;
+        
+        isSecondDouble = true
+        var copyOfSecondNumber = String(secondNumber)
+        if (copyOfSecondNumber.removeLast() == "0") {
+            if (copyOfSecondNumber.removeLast() == ".") {
+                isSecondDouble = false
             }
-            else if (second_action == "minus")
-            {
-                second_number -= third_number;
-            }
-            else if (second_action == "multiply")
-            {
-                second_number *= third_number;
-            }
-            else if (second_action == "divide")
-            {
-                if (third_number == 0)
-                {
-                    label_answer.text = "Ошибка"
-                    return
-                }
-                second_number /= third_number;
-                
-            }
-            var tmp_cur = String(second_number);
-            if (tmp_cur.removeLast() == "0")
-            {
-                if (tmp_cur.removeLast() == ".")
-                {
-                    is_second_double = false
-                }
-                else
-                {
-                    is_second_double = true
-                }
-            }
-            else
-            {
-                is_second_double = true
-            }
-            second_action = third_action;
-            third_number = 0;
-            third_action = ""
-            is_exist_thrd_num = false
-            is_third_double = false
         }
+    }
+    
+    func toExpForm() {
+        var cnt = 0
+        while (curentNumberString.count > 6) {
+            _ = curentNumberString.removeLast()
+            cnt += 1
+        }
+        if (cnt > 0) {
+            curentNumberString.insert(",", at: curentNumberString.index(curentNumberString.startIndex, offsetBy: 1))
+            while (curentNumberString.last == "0") {
+                _ = curentNumberString.removeLast()
+            }
+            if (curentNumberString.last == ",") {
+                _ = curentNumberString.removeLast()
+            }
+            curentNumberString += "e"
+            curentNumberString += String(cnt + 5)
+        }
+        labelAnswer.text = curentNumberString
+        isLastComputed = true
+        softClear()
+    }
+    
+    func setSpacesToLabel() {
+        if (toLabel.count > 6) {
+            toLabel.insert(" ", at: toLabel.index(toLabel.endIndex, offsetBy: -6))
+        }
+        if (toLabel.count > 3) {
+            toLabel.insert(" ", at: toLabel.index(toLabel.endIndex, offsetBy: -3))
+        }
+    }
+    
+    func recalculateSpacesForDouble() {
+        while (curentNumberString.count > 9) {
+            _ = curentNumberString.removeLast()
+        }
+        currentNumber = Double(curentNumberString) ?? 0
+        
+        toLabel = curentNumberString
+        var reversedEnd = ""
+        while (toLabel.last != ".") {
+            reversedEnd += String(toLabel.removeLast())
+        }
+        _ = toLabel.removeLast()
+        setSpacesToLabel()
+        toLabel.insert(",", at: toLabel.endIndex)
+        while (reversedEnd.count > 0) {
+            toLabel.insert(reversedEnd.removeLast(), at: toLabel.endIndex)
+        }
+        labelAnswer.text = toLabel
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        label_answer.numberOfLines = 1
-        label_answer.adjustsFontForContentSizeCategory = true
-        //label_answer.adjustsFontSizeToFitWidth = true
-        // Do any additional setup after loading the view, typically from a nib.
+        labelAnswer.numberOfLines = 1
+        labelAnswer.adjustsFontForContentSizeCategory = true
+        
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(swipe))
+        swipeLeft.direction = .left
+        self.view.addGestureRecognizer(swipeLeft)
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(swipe))
+        swipeRight.direction = .right
+        self.view.addGestureRecognizer(swipeRight)
     }
     
     override var preferredStatusBarStyle : UIStatusBarStyle {
